@@ -1,4 +1,3 @@
 pyTelegramBotAPI
 matplotlib
 numpy
-sqlite3
