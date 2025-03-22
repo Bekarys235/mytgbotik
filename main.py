@@ -9,6 +9,10 @@ bot = telebot.TeleBot(TOKEN)
 conn = sqlite3.connect("students.db", check_same_thread=False)
 cursor = conn.cursor()
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "Привет! Я готов анализировать твои данные.")
+    
 def calculate_percentages(user_id):
     cursor.execute("SELECT sat, act, ielts, toefl, gpa, olympiads, volunteering, research, work FROM users WHERE user_id = ?", (user_id,))
     data = cursor.fetchone()
